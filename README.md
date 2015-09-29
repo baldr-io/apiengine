@@ -9,7 +9,7 @@ APIEngine is a C++ program and framework for creating JSON API's in the easiest 
 ## Dependencies
 * Lua 5.3
 * Jsoncpp
-* A lua JSON library fo your choice
+* A lua JSON library of your choice
 * microhttpd
 
 ## How to use
