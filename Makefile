@@ -1,7 +1,7 @@
 CXX=clang++
 CFLAGS=-c -Wall -pedantic -std=c++11
-LDFLAGS=-ljsoncpp -lmicrohttpd
-SOURCES=main.cpp
+LDFLAGS=-ljsoncpp -lmicrohttpd -llua
+SOURCES=main.cpp scriptapi.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 BINARY=baldrapi
 OUTDIR=bin
@@ -16,4 +16,4 @@ $(BINARY): $(OBJECTS)
 	$(CXX) $(CFLAGS) $< -o $@
 
 clean:
-	rm -f $(OBJECTS) $(OUTPUTDIR)/$(BINARY)
+	rm -f $(OBJECTS) $(OUTDIR)/$(BINARY)
