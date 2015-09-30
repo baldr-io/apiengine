@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>APIEngine by baldr-io</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>APIEngine</h1>
+        <h2>A JSON API engine written in C++</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/baldr-io/apiengine/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/baldr-io/apiengine/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/baldr-io/apiengine" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="apiengine" class="anchor" href="#apiengine" aria-hidden="true"><span class="octicon octicon-link"></span></a>APIEngine</h1>
+
+<p>APIEngine is a C++ program and framework for creating JSON API's in the easiest way possible.  It was created by the baldr.io team when we got sick of the other solutions out there and decided to just create out own.  We didn't need a large scalable API, just something simple.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Built in HTTP server to serve the content.</li>
+<li>LUA scripting to create the endpoints</li>
+<li>Easy to use flat file organization system</li>
+</ul>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<ul>
+<li>Lua 5.3</li>
+<li>Jsoncpp</li>
+<li>A lua JSON library of your choice</li>
+<li>microhttpd</li>
+</ul>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use</h2>
+
+<p>All you need to get up an running is the binary, and an api/ folder with at least 1 LUA script in it.  The engine works by translating calls to serverip:serverport/api/something to ./api/something.lua, calls the function runapi() inside of that script (which is our entry point), and grabs the return value.  The return value must be a string, and the function must take no arguments.  If you want to layer your APIs, simply create folders and place the scripts inside of them.  If you want your api endpoint to be at /api/serverdata/diskspace, create a serverdata folder in ./api, and inside of that folder create your diskspace.lua script. Yes, it really is that easy.</p>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<pre><code>local json = require("../dkjson")
+
+function runapi()
+    local datetbl = {
+        date = os.date()
+    }
+    return json.encode(datetbl)
+end
+</code></pre>
+
+<p>Yes, it really is that simple!  I'm using the <a href="http://dkolf.de/src/dkjson-lua.fsl/home">dkjson</a> library, but you can use any JSON library you want.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
